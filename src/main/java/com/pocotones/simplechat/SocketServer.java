@@ -1,4 +1,4 @@
-package com.pocotones;
+package com.pocotones.simplechat;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

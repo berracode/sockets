@@ -10,7 +10,7 @@
  * In any event, this notice and the above copyright must always be included
  * verbatim with this file.
  */
-package com.pocotones;
+package com.pocotones.simplechat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class SocketClient {
 
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("192.168.1.102", 9090);
+            Socket socket = new Socket("192.168.1.161", 9090);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
