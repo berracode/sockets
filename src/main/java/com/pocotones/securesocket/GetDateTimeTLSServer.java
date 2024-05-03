@@ -1,13 +1,21 @@
 package com.pocotones.securesocket;
 
-import javax.net.ssl.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.*;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
 
 public class GetDateTimeTLSServer {
 
@@ -21,7 +29,7 @@ public class GetDateTimeTLSServer {
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 
             char[] password = "changeit".toCharArray();
-            keyStore.load(new FileInputStream("serverks.jks"), password);
+            keyStore.load(new FileInputStream("/Users/juanhernandez/Documents/PProjects/JavaProjects/sockets/cert-test-udea.jks"), password);
 
             keyManagerFactory.init(keyStore, password);
             sslContext.init(keyManagerFactory.getKeyManagers(), null, null);
@@ -34,6 +42,7 @@ public class GetDateTimeTLSServer {
             while (true) {
                 SSLSocket clientSocket = (SSLSocket) serverSocket.accept();
                 System.out.println("CLiente conectado de manera segura desde el puerto: "+ clientSocket.getPort());
+
 
                 LocalDateTime currentTime = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

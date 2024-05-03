@@ -16,14 +16,14 @@ public class GetDateTimeHttpServer {
             System.out.println("Servidor escuchando en el puerto " + portNumber + "...");
 
             // Esperar una conexión
-            Socket clientSocket = serverSocket.accept();
+            Socket clientSocket = serverSocket.accept(); //navegqdor
 
             // Obtener la hora actual
             LocalDateTime currentTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String formattedTime = currentTime.format(formatter);
 
-            // Construir la respuesta en formato HTML
+            // Construir la respuesta en formato HTML -- SSR
             String response = "<html><body><h1>Hora actual:</h1><p>" + formattedTime + "</p></body></html>";
 
             // Escribir la respuesta en el socket del cliente

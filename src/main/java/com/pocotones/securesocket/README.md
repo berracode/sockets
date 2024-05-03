@@ -12,7 +12,7 @@ trabajando en Java podemos usar directamente keytool
 2. Convertir PEM PKCS12
 
 Si estamos trabajando una aplicación Java, el código en la clase GetDateTimeTLSServer no soporta 
-el formato PEM. Por tanto debemos convertirlo a PKCS12 para luego agregarlo a un keystore jks.
+el formato PEM (Privacy Enhanced Mail). Por tanto debemos convertirlo a PKCS12 (Public Key Cryptography Standards #12) para luego agregarlo a un keystore jks.
 
 ```sh
 openssl pkcs12 -export -in cert.pem -inkey key.pem -out certificate.p12 -name "certificate"
